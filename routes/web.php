@@ -19,3 +19,4 @@ Route::get('/', function () {
 });
 
 Route::resource('/post', 'PostController');
+Route::resource('/arsimi', 'ArsimiController');

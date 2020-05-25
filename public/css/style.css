@@ -31,3 +31,12 @@ li.active > a {
     font-style: italic;
 }
 
+.navbar-nav .nav-item.active .nav-link,
+.navbar-nav .nav-item:hover .nav-link {
+    background: rgb(255, 255, 255);
+    color: #000 !important;
+}
+
+#arsimi-card {
+    background: #000000a1 linear-gradient(#e3e64a, #2525256b);
+}

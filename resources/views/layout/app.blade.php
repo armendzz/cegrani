@@ -43,20 +43,20 @@
 
       </div>
       <nav class="navbar navbar-expand-lg navbar-dark bg-light mb-2" id="main-menu">
-        <a class="navbar-brand" href="#"><i class="fa fa-home"></i> Fillimi</a>
+        <a class="navbar-brand" href="/"><i class="fa fa-home"></i> Fillimi</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item white">
-              <a class="nav-link" href="#"><i class="fa fa-newspaper-o"></i> Njoftime</a>
+              <a class="nav-link" href="/post"><i class="fa fa-newspaper-o"></i> Njoftime</a>
             </li>
             <li class="nav-item white">
               <a class="nav-link" href="#"><i class="fa fa-anchor"></i> Rezistenca</a>
             </li>
             <li class="nav-item white">
-              <a class="nav-link" href="#"><i class="fa fa-futbol-o"></i> KF Arsimi</a>
+              <a class="nav-link" href="/arsimi"><i class="fa fa-futbol-o"></i> KF Arsimi</a>
             </li>
             <li class="nav-item white">
                 <a class="nav-link" href="#"><i class="fa fa-university"></i> BL Cegran</a>
@@ -73,9 +73,6 @@
               <li class="nav-item white">
                 <a class="nav-link" href="#"><i class="fa fa-camera"></i> Galeria</a>
               </li>
-              
-            
-            
           </ul>
         </div>
       </nav>
@@ -158,5 +155,20 @@
         text: 'Thumbnail'
       });
     </script>
+        <script type="text/javascript">
+                    $(function(){
+                var current_page_URL = location.href;
+                $( "a" ).each(function() {
+                    if ($(this).attr("href") !== "#") {
+                    var target_URL = $(this).prop("href");
+                    if (target_URL == current_page_URL) {
+                        $('nav a').parents('li, ul').removeClass('active');
+                        $(this).parent('li').addClass('active');
+                        return false;
+                    }
+                    }
+                });
+                });
+        </script>
   </body>
 </html>
