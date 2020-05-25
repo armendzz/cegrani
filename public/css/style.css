@@ -1,0 +1,33 @@
+#top-menu{
+    background: #fbfbfb;
+    border-bottom: 1px solid #ececec;
+    height: 31px;
+}
+
+#main-menu {
+    background: #1291cd linear-gradient(#1291cd, #1291cd);
+    font-family: 'Open Sans', sans-serif;
+    color: white !important;
+    color: #FFF;
+  
+}
+
+li.active > a {
+    background: rgb(255, 255, 255);
+    color: #000 !important; }
+
+    li.white > a {
+        
+        color: rgb(255, 255, 255) !important; }
+
+.card {
+    margin-bottom: 10px;
+}
+
+.card-header {
+    background: #1291cd;
+    color: white;
+    font-family: Arial;
+    font-style: italic;
+}
+

@@ -14,5 +14,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $date = date('Y-m-d');
+    return view('home')->with('date', $date);
 });
+
+Route::resource('/post', 'PostController');
