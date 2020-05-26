@@ -18,8 +18,8 @@ class ArsimiController extends Controller
 
 
         $fb = new \Facebook\Facebook([
-            'app_id' => 'APP IDD',
-            'app_secret' => 'APP SECRET',
+            'app_id' => '551406325565243',
+            'app_secret' => '3e2dd1b57fc5b4230293f41d809b01bb',
             'default_graph_version' => 'v2.10',
             ]);
         
@@ -29,8 +29,8 @@ class ArsimiController extends Controller
               try {
                 // Returns a `FacebookFacebookResponse` object
                 $response = $fb->get(
-                  'fbpage',
-                  'token'
+                  '/122738611080872/feed?fields=id,message,created_time,attachments{subattachments,media}&limit=50',
+                  'EAAH1gEophzsBAHwgGPZCQfHuFVc36ZA6zYppgFkwPZBbr1VZCIrPyMJYGi1381hHwHdxgGlsqsW9vjZC0vUd9Cz4il98ZBwDfCiYAf7ZCZBkqHZAC1hrpJpKk2afs4vcckOQjPS1WeWajTJufayrEagcXAWBiGZAuAHCX108ZCse6K3BBZCPQAi53FDomQuMSn5wDntl1XWtaCtslNaHWuDQ3fQZC'
                 );
               } catch(FacebookExceptionsFacebookResponseException $e) {
                 echo 'Graph returned an error: ' . $e->getMessage();
@@ -39,7 +39,7 @@ class ArsimiController extends Controller
                 echo 'Facebook SDK returned an error: ' . $e->getMessage();
                 exit;
               }
-              $graphNode = $response->getGraphEdge();
+              $graphNode = $response->getGraphEdge();    
               $postt = (json_decode($graphNode));
               foreach($postt as $post){
                 $vidid = substr($post->id, -16);

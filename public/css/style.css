@@ -40,3 +40,70 @@ li.active > a {
 #arsimi-card {
     background: #000000a1 linear-gradient(#e3e64a, #2525256b);
 }
+
+#news-ticker { 
+    font-weight: bold;
+    display: block;
+    font-family: monospace;
+    font-size: 15px;
+    padding: 2px;
+    margin: 0;
+    border: 2px solid #1291cd;
+    border-radius: 25px;
+    
+}
+
+#news-ticker .ticker-title {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+#news-ticker ul { 
+    display: inline-block;
+    position: relative;
+}
+
+#news-ticker li a {
+    color: #f00;
+    text-decoration: none;
+}
+
+#news-ticker li a:hover {
+    text-decoration: underline;
+    color: #00f;
+}
+
+#news-ticker li {
+    position: absolute;
+    left: 0;
+    width: 0;
+    overflow: hidden;
+    height: 1.5em;
+    word-wrap: break-word;  
+    opacity: 0
+}
+
+#news-ticker li.tick {
+    -webkit-animation: tick 5s linear;
+    
+}
+
+@-webkit-keyframes tick {
+  0% {
+    width: 0;
+  }
+  5% {
+      opacity: 1;
+  } 
+  90% {
+    width: 550px;
+    opacity: 1;
+  }
+  100% {
+     opacity: 0
+  }
+}
+
+#info {
+    font-size: 13px !important;
+}

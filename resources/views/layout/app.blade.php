@@ -22,6 +22,7 @@
     <!-- Custom styles for this template -->
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
     <link href="https://getbootstrap.com/docs/4.0/examples/blog/blog.css" rel="stylesheet">
+   
   </head>
 
   <body>
@@ -35,13 +36,24 @@
           <a class="p-2 text-muted" href="#">FH Cegrani-Zvicer</a>
           <a class="p-2 text-muted" href="#">FH Cegrani-Austri</a>
           <a class="p-2 text-muted" href="#"><i class="fa fa-volume-control-phone"></i> Kontakt</a>
+          <a class="p-2 text-muted float-right" href="#"><i class="fa fa-volume-control-phone"></i> Kontakt</a>
+          <a class="p-2 text-muted float-right" href="#"><i class="fa fa-volume-control-phone"></i> Kontakt</a>
         </nav>
       </div>
-
-      <div class="border mt-1 mb-1">
+      <div class="col-md-13"> 
+      <div class="mt-1 mb-1">
         <img src="https://cegrani.mk/wp-content/uploads/2019/08/Unbenannt-1-2.png" class="img-fluid" alt="Responsive image">
+          <div class="float-right mr-1 mt-1 d-none d-lg-block">
+            <form>
+               <input type="email" class="form-control mb-1" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                <input type="password" class="form-control mb-1" id="exampleInputPassword1" placeholder="Password">
 
+              <button type="submit" class="btn btn-primary">Lajmrohu</button>
+              <a class="btn btn-success" href="/register">Regjistrohu</a>
+            </form>
+        </div>
       </div>
+    </div>
       <nav class="navbar navbar-expand-lg navbar-dark bg-light mb-2" id="main-menu">
         <a class="navbar-brand" href="/"><i class="fa fa-home"></i> Fillimi</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -76,40 +88,44 @@
           </ul>
         </div>
       </nav>
-     
+      <div class="alert alert-warning" role="alert">
+        <a href="/register" style="color: #000">Ju Mund te Regjistroheni ne kete faqe dhe te shperndani Fotot/Videot/Artikujt tuaja ne kete arhive te fshatit tone.</a> (Autori qe poston do ti shfaqet Emri)
+      </div>
     <main role="main" class="container">
       <div class="row">
         @yield('content')
 
-        <aside class="col-md-3 blog-sidebar">
+        <aside class="col-md-4 blog-sidebar">
          
               <div class="card">
-                  <div class="card-header">About</div>
-           <div class="card-body">
-            <p class="mb-0">Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
+                  <div class="card-header">Temperatura</div>
+           <div class="card-body" >
+            <a class="weatherwidget-io" href="https://forecast7.com/en/41d8420d97/chegrane/" data-label_1="Cegran" data-label_2="Temperatura" data-days="3" data-theme="blue-mountains" >Cegran Temperatura</a>
+<script>
+!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
+</script>
+           
         </div>
         </div>
         
 
           
               <div class="card">
-                  <div class="card-header">Archives</div>
+                  <div class="card-header">Të dhëna dhe statistika</div>
               
-              <div class="card-body">
-                  <ol class="list-unstyled mb-0">
-              <li><a href="#">March 2014</a></li>
-              <li><a href="#">February 2014</a></li>
-              <li><a href="#">January 2014</a></li>
-              <li><a href="#">December 2013</a></li>
-              <li><a href="#">November 2013</a></li>
-              <li><a href="#">October 2013</a></li>
-              <li><a href="#">September 2013</a></li>
-              <li><a href="#">August 2013</a></li>
-              <li><a href="#">July 2013</a></li>
-              <li><a href="#">June 2013</a></li>
-              <li><a href="#">May 2013</a></li>
-              <li><a href="#">April 2013</a></li>
-            </ol>
+              <div class="card-body" id="info">
+               
+                  
+                      <li>Krahina etnografike/gjeografike:  <strong>Pollog i Epërm</strong></li>
+                      <li>Lartësia: <strong>555 m (m.n.d.)</strong></li>
+                      <li>Zona Kohore: <strong>CET(UTC+1) Verore CEST(UTC+2)</strong></li>
+                      <li>Kodi Postal: <strong>1237</strong></li>
+                      <li>Prefiksi:<strong> (+389) 042</strong></li>
+                      <li>Targa: <strong>GV</strong></li>
+                      <li>Koordinatat: <strong>41° 50′ 20″ Veri 20° 58′ 32″ Lindje</strong></li>
+                      <li>Popullsia: <strong>16,000 banorë</strong></li>
+                    
+          
               </div>
             </div>
           
@@ -169,6 +185,35 @@
                     }
                 });
                 });
+        </script>
+        <script>
+          $(function () {
+           var $ticker = $('#news-ticker'),
+             $first = $('li:first-child', $ticker);
+           
+           // put an empty space between each letter so we can 
+           // use break word
+           $('a', $ticker).each(function () {
+               var $this = $(this),
+                 text = $this.text();
+              $this.html(text.split('').join('&#8203;'));
+           });
+           
+           // begin the animation
+           function tick($el) {
+               $el.addClass('tick')
+                 .on('webkitAnimationEnd oanimationend msAnimationEnd animationend', function () {
+                     
+                   $el.removeClass('tick');
+                     var $next = $el.next('li');
+                     $next = $next.length > 0 ? $next : $first;
+                   tick($next);
+               });
+           }
+               
+           tick($first);
+           
+       });
         </script>
   </body>
 </html>
