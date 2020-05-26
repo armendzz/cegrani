@@ -13,10 +13,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    $date = date('Y-m-d');
-    return view('home')->with('date', $date);
-});
+Route::get('/', 'HomeController@index');
+
+
+
+
+
 
 Route::resource('/post', 'PostController');
 Route::resource('/arsimi', 'ArsimiController');

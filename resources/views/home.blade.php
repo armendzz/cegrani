@@ -43,6 +43,38 @@
         </div>
     </div>
 </div>
+<h2 style="color: red">Kualiteti i ajrit</h1>
+  
+
+  <h2 style="color: red">Temperatura ne Cegran momentalish</h1>
+
+   <h1> {{ $sot['temperature'] }} C </h1>
+   <h3 style="color: blue">oret e ardhshme</h1>
+   
+    <p> {{ substr($tempora['forecasts'][3]['fcst_valid_local'],11,5) }} <strong> {{ $tempora['forecasts'][3]['temp'] }} C</strong></p> 
+    <p> {{ substr($tempora['forecasts'][7]['fcst_valid_local'],11,5) }} <strong> {{ $tempora['forecasts'][3]['temp'] }} C</strong></p> 
+    <p> {{ substr($tempora['forecasts'][11]['fcst_valid_local'],11,5) }} <strong> {{ $tempora['forecasts'][3]['temp'] }} C</strong></p> 
+    <p> {{ substr($tempora['forecasts'][15]['fcst_valid_local'],11,5) }} <strong> {{ $tempora['forecasts'][3]['temp'] }} C</strong></p> 
+    <p> {{ substr($tempora['forecasts'][19]['fcst_valid_local'],11,5) }} <strong> {{ $tempora['forecasts'][3]['temp'] }} C</strong></p> 
+    <p> {{ substr($tempora['forecasts'][23]['fcst_valid_local'],11,5) }} <strong> {{ $tempora['forecasts'][3]['temp'] }} C</strong></p> 
+    <p> {{ substr($tempora['forecasts'][27]['fcst_valid_local'],11,5) }} <strong> {{ $tempora['forecasts'][3]['temp'] }} C</strong></p> 
+ <h2 style="color: red">Temperatura ne Cegran per 5 ditet e ardhshme</h1>
+
+
+  @foreach (array_slice($temp['forecasts'],1) as $dita)
+    <p>====================================</p>
+    <p>Data: {{ $dita['dow'] }} </p>
+    <p>Temperatura Minimale: {{ $dita['min_temp'] }} C</p>
+    <p>Temperatura Maximale: {{ $dita['max_temp'] }} C</p>
+    <p>Lindja e diellit: {{ substr($dita['sunrise'],0,10) }} <strong> {{ substr($dita['sunrise'],11,8) }}</strong></p>
+    <p>Perendimi i Diellit: {{ substr($dita['sunset'],0,10) }} <strong> {{ substr($dita['sunset'],11,8) }}</strong></p>
+
+  @endforeach
+
+
+
+
+
     <div class="blog-post mt-2">
       <h2 class="blog-post-title">Sample blog post</h2>
       <p class="blog-post-meta">January 1, 2014 by <a href="#">Mark</a></p>
