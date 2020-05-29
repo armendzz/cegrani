@@ -41,7 +41,7 @@
         </nav>
       </div>
       <div class="col-md-13"> 
-      <div class="mt-1 mb-1">
+      <div class="mt-3 mb-3">
         <img src="https://cegrani.mk/wp-content/uploads/2019/08/Unbenannt-1-2.png" class="img-fluid" alt="Responsive image">
           <div class="float-right mr-1 mt-1 d-none d-lg-block">
             <form>
@@ -88,9 +88,13 @@
           </ul>
         </div>
       </nav>
+      @guest
+          
+      
       <div class="alert alert-warning" role="alert">
         <a href="/register" style="color: #000">Ju Mund te Regjistroheni ne kete faqe dhe te shperndani Fotot/Videot/Artikujt tuaja ne kete arhive te fshatit tone.</a> (Autori qe poston do ti shfaqet Emri)
       </div>
+     @endguest
     <main role="main" class="container">
       <div class="row">
         @yield('content')
@@ -98,24 +102,16 @@
         <aside class="col-md-4 blog-sidebar">
          
               <div class="card">
-                  <div class="card-header">Temperatura</div>
+                  <div class="card-header">Kualiteti i Ajrit</div>
            <div class="card-body" >
-            <a class="weatherwidget-io" href="https://forecast7.com/en/41d8420d97/chegrane/" data-label_1="Cegran" data-label_2="Temperatura" data-days="3" data-theme="blue-mountains" >Cegran Temperatura</a>
-<script>
-!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
-</script>
-           
+            
+            <div class="circle" id="circle" value="{{ $air }}">{{ $air }} - AQI</div>
+            <span>Stacioni Per matjen e ajrit gjendet ne Gostivar</span> 
         </div>
-        </div>
-        
-
-          
+        </div>         
               <div class="card">
                   <div class="card-header">Të dhëna dhe statistika</div>
-              
-              <div class="card-body" id="info">
-               
-                  
+                  <div class="card-body" id="info">
                       <li>Krahina etnografike/gjeografike:  <strong>Pollog i Epërm</strong></li>
                       <li>Lartësia: <strong>555 m (m.n.d.)</strong></li>
                       <li>Zona Kohore: <strong>CET(UTC+1) Verore CEST(UTC+2)</strong></li>
@@ -124,30 +120,23 @@
                       <li>Targa: <strong>GV</strong></li>
                       <li>Koordinatat: <strong>41° 50′ 20″ Veri 20° 58′ 32″ Lindje</strong></li>
                       <li>Popullsia: <strong>16,000 banorë</strong></li>
-                    
-          
+                  </div>
               </div>
-            </div>
-          
-
-          
-              <div class="card">
+                <div class="card">
                   <div class="card-header">Elsewhere</div>
-            <div class="card-body">
-            <ol class="list-unstyled">
-              <li><a href="#">GitHub</a></li>
-              <li><a href="#">Twitter</a></li>
-              <li><a href="#">Facebook</a></li>
-            </ol>
-        </div>
+            
+              <div class="cardcc">
+                <div class="card-body">
+                  test
+                </div>
         
-          </div>
         </aside><!-- /.blog-sidebar -->
 
       </div><!-- /.row -->
 
     </main><!-- /.container -->
 
+  
     <footer class="blog-footer">
       <p>Blog template built for <a href="https://getbootstrap.com/">Bootstrap</a> by <a href="https://twitter.com/mdo">@mdo</a>.</p>
       <p>
@@ -158,6 +147,7 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
+    <script src="/js/aqi.js"></script>
     <script src="https://use.fontawesome.com/7e0b61cf62.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script>window.jQuery || document.write('<script src="js/jquery-slim.min.js"><\/script>')</script>

@@ -15,10 +15,21 @@
         </li>
     </ul>
   </div>
-  <h2 style="color: rgba(104, 14, 14, 0.562)">Temperatura ne Cegran momentalish</h1>
-    
-    <h1> {{ $sot['temperature'] }}° C </h1>
 
+
+ 
+    <h2 style="color: rgb(255, 255, 255)">Temperatura ne Cegran momentalish</h1>
+   
+      <div class="col-md-2 d-inline-block">
+        <img src="https://www.shkabaj.net/moti/img/icons/116Night.png" alt="" class="src"> <h1>{{ $sot['temperature'] }} C</h1>
+    </div>
+  
+
+  
+  
+    
+    
+    
 
    <h3 style="color: blue">oret e ardhshme</h1>
    
@@ -112,9 +123,7 @@
     </div>
   </div>
 
-<h2 style="color: red">Kualiteti i ajrit</h1>
-  
-    <h1 style="color: green"> {{ $air }} </h1>  
+
     
   
 
