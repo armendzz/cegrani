@@ -10,4 +10,9 @@ class AdminController extends Controller
                
         return view('admin/home');
     }
+
+    public function category() {
+               
+        return view('admin.categories.index');
+    }
 }

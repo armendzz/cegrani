@@ -16,7 +16,7 @@
     </ul>
   </div>
 
-
+    
  
     <h2 style="color: rgb(255, 255, 255)">Temperatura ne Cegran momentalish</h1>
    
@@ -28,7 +28,7 @@
   
   
     
-    
+    asd 
     
 
    <h3 style="color: blue">oret e ardhshme</h1>
