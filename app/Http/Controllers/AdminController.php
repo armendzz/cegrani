@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Category;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -13,6 +13,6 @@ class AdminController extends Controller
 
     public function category() {
                
-        return view('admin.categories.index');
+        return view('admin.categories.index')->with('categories', Category::all());
     }
 }

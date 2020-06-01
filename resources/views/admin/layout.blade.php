@@ -29,8 +29,8 @@
                   Kategorit
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="#">Shiko Kategorit</a>
-                  <a class="dropdown-item" href="#">Krijo Kategori</a>
+                <a class="dropdown-item" href="{{ route('admincategory') }}">Shiko Kategorit</a>
+                  <a class="dropdown-item" href="/cateogry/create">Krijo Kategori</a>
                 </div>
               </li>
               <li class="nav-item dropdown">
@@ -47,7 +47,11 @@
         
         </div>
       </nav>
-
+      @if(session()->has('sukses'))
+      <div class="alert alert-success container mt-2">
+        {{ session()->get('sukses') }}
+      </div>
+      @endif
     @yield('content')
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>

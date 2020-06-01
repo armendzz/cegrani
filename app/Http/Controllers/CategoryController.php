@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 use App\Category;
 use Illuminate\Http\Request;
+use App\Http\Requests\CreateCategoryRequest;
+use App\Http\Requests\UpdateCategoryRequest;
 
 class CategoryController extends Controller
 {
@@ -13,7 +15,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return view('kategorite.index');
+        return view('kategorite.index')->with('categories', Category::all());
     }
 
     /**
@@ -32,18 +34,16 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateCategoryRequest $request)
     {
-        $this->validate($request, [
-
-            'name' => 'required|unique:categories'
-        ]);
-
         Category::create([
             'name' => $request->name
         ]);
+         
 
-        return redirect('admincategory');
+        session()->flash('sukses', 'Kategoria u shtua me sukses.');
+        
+        return redirect(route('admincategory'));
     }
 
     /**
@@ -65,7 +65,9 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        return view('admin.categories.edit');
+        $category = Category::find($id);
+        
+        return view('admin.categories.edit')->with('category', $category);
     }
 
     /**
@@ -75,9 +77,19 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateCategoryRequest $request, $id)
     {
-        //
+        $category = Category::find($id);
+
+        $category->update([
+            'name' => $request->name
+        ]);
+
+
+        $category->save();
+        
+        session()->flash('sukses', 'Kategoria u ndryshu me sukses');
+        return redirect(route('admincategory'));
     }
 
     /**
