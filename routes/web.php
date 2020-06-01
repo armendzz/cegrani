@@ -27,4 +27,4 @@ Route::resource('/arsimi', 'ArsimiController');
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/admin', 'AdminController@index')->name('admin')->middleware('auth', 'admin');
-Route::get('/admin/category', 'AdminController@category')->middleware('auth', 'admin');
+Route::get('/admin/category', 'AdminController@category')->name('admincategory')->middleware('auth', 'admin');
