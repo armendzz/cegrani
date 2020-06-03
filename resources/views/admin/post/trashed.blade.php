@@ -29,13 +29,17 @@
                       <td>
                         
 
-                      <form action="{{ route('post.destroy', $item->id) }}" method="POST">
-                        @csrf
-                        @method('DELETE')
-
-                      <button type="submit" class="btn btn-danger"">Fshije pergjithmon</button> 
-                      <a href="{{ route('adminposte', $item->id) }}" class="btn btn-success">Riktheje</a>
-                    </form>
+                        <form action="{{ route('adminpostrs', $item->id) }}" method="POST">
+                            @csrf
+                            @method('PUT')
+    
+                          <button type="submit" class="btn btn-info"">Riktheje</button> 
+                        </form>
+                        <form action="{{ route('post.destroy', $item->id) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                          <button type="submit" class="btn btn-danger"">Fshije pergjithmon</button> 
+                        </form>
                         </td>
                      
                       </tr>    

@@ -13,15 +13,19 @@
               <table class="table">
                   <thead>
                       <th>Emri</th>
+                      <th>numri i posteve</th>
                       <th></th>
                       <th></th>
                   </thead>
                   <tbody>
                       @foreach ($categories as $item)
                       <tr>
-                      <td>
-                          {{ $item->name }}
-                      </td>
+                        <td>
+                            {{ $item->name }}
+                        </td>
+                        <td>
+                        {{ $item->posts->count() }}
+                        </td>
                       <td>
                         <a href="{{ route('cateogry.edit', $item->id) }}" class="btn btn-info">Ndryshoje</a>
                         </td>

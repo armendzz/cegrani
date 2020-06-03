@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\CreatePostRequest;
+use App\Http\Requests\UpdatePostRequest;
 use App\Post;
+use App\Category;
 use Illuminate\Support\Facades\Storage;
 class PostController extends Controller
 {
@@ -43,7 +45,8 @@ class PostController extends Controller
         Post::create([
             'title' => $request->title,
             'content' => $request->content,
-            'image' => $image
+            'image' => $image,
+            'category_id' => $request->category
         ]);
 
             session()->flash('sukses', 'Artikulli u shtua me sukses');
@@ -79,9 +82,19 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
+    public function update(UpdatePostRequest $request, $id)
+    {   
+        $post = Post::find($id);
+        $data = $request->only(['title', 'content', 'image', 'category']);
+       
+       if ($request->hasFile('image')){
+          $image = $request->image->store('posts', 'public');
+          $data['image'] = $image;
+       }
+       $post->category_id = $request->category;
+        $post->update($data);
+        session()->flash('sukses', 'Posti u ndryshua me sukses');
+        return redirect(route('adminpost'));
     }
 
     /**

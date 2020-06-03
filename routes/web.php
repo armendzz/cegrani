@@ -32,4 +32,4 @@ Route::get('/admin/post', 'AdminController@post')->name('adminpost')->middleware
 Route::get('/admin/createpost', 'AdminController@postshto')->name('adminpostc')->middleware('auth', 'admin');
 Route::get('/admin/trashedpost', 'AdminController@trashed')->name('adminposttr')->middleware('auth', 'admin');
 Route::get('/admin/postedit/{post}', 'AdminController@postedit')->name('adminposte')->middleware('auth', 'admin');
-Route::post('/admin/post', 'AdminController@postc')->name('adminpostcmp')->middleware('auth', 'admin');
+Route::put('/admin/post-restore/{post}', 'AdminController@restore')->name('adminpostrs')->middleware('auth', 'admin');

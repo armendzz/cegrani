@@ -14,6 +14,7 @@
                   <thead>
                       <th>image</th>
                       <th>title</th>
+                      <th>Kategoria</th>
                       <th></th>
                       <th></th>
                   </thead>
@@ -25,6 +26,9 @@
                         </td>
                         <td>
                             {{ $item->title }}
+                        </td>
+                        <td>
+                            {{ $item->category->name }}
                         </td>
                       <td>
                         <a href="{{ route('adminposte', $item->id) }}" class="btn btn-info">Ndryshoje</a>

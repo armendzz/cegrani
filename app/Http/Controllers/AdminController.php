@@ -24,17 +24,26 @@ class AdminController extends Controller
 
     public function postshto() {
                
-        return view('admin.post.create');
+        return view('admin.post.create')->with('categories', Category::all());
     }
 
     public function postedit($id) {
         $post = Post::find($id);
         
-        return view('admin.post.edit')->with('post', $post);
+        return view('admin.post.edit')->with('post', $post)->with('categories', Category::all());
     }
 
     public function trashed() {
            
         return view('admin.post.trashed')->with('post', Post::onlyTrashed()->get());
+    }
+
+    public function restore($id) {
+        $post = Post::withTrashed()->where('id', $id)->firstOrFail();
+
+        $post->restore();
+
+        session()->flash('sukses', 'Posti u rithye me sukses');
+        return redirect(route('adminpost'));
     }
 }
