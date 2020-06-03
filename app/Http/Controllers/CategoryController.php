@@ -100,6 +100,12 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $category = Category::find($id);
+
+        $category->delete();
+
+        session()->flash('sukses', 'Kategoria u fshi me sukses');
+
+        return redirect(route('admincategory'));
     }
 }

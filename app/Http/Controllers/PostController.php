@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Http\Requests\CreatePostRequest;
+use App\Post;
+use Illuminate\Support\Facades\Storage;
 class PostController extends Controller
 {
     /**
@@ -14,12 +16,7 @@ class PostController extends Controller
     public function index()
     {
         $date = date('Y-m-d');
-
-
-
-
-
-        return view('njoftime/index')->with('date', $date);
+        return view('post/index')->with('date', $date);
     }
 
     /**
@@ -38,9 +35,19 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreatePostRequest $request)
     {
-        //
+        $image = $request->image->store('posts', 'public');
+        
+
+        Post::create([
+            'title' => $request->title,
+            'content' => $request->content,
+            'image' => $image
+        ]);
+
+            session()->flash('sukses', 'Artikulli u shtua me sukses');
+            return redirect(route('adminpost'));
     }
 
     /**
@@ -85,6 +92,16 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $post = Post::withTrashed()->where('id', $id)->firstOrFail();
+        if ($post->trashed()){
+            $post->forceDelete();
+            session()->flash('sukses', 'Posti u fshi nga database');
+        } else {
+            $post->delete();
+            session()->flash('sukses', 'Posti u dergua ne trash');
+        }
+
+        
+        return redirect(route('adminpost'));
     }
 }

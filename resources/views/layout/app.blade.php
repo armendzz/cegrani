@@ -43,15 +43,26 @@
       <div class="col-md-13"> 
       <div class="mt-3 mb-3">
         <img src="https://cegrani.mk/wp-content/uploads/2019/08/Unbenannt-1-2.png" class="img-fluid" alt="Responsive image">
-          <div class="float-right mr-1 mt-1 d-none d-lg-block">
-            <form>
-               <input type="email" class="form-control mb-1" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-                <input type="password" class="form-control mb-1" id="exampleInputPassword1" placeholder="Password">
-
+        @guest
+        <div class="float-right mr-1 mt-1 d-none d-lg-block">
+            <form method="POST" action="{{ route('login') }}">
+              @csrf
+              <input id="email" type="email" class="form-control @error('email') is-invalid @enderror mb-1" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+              <input id="password" type="password" class="form-control @error('password') is-invalid @enderror mb-1" name="password" required autocomplete="current-password">
               <button type="submit" class="btn btn-primary">Lajmrohu</button>
               <a class="btn btn-success" href="/register">Regjistrohu</a>
             </form>
         </div>
+        @endguest
+        @auth
+        <div class="float-right mr-1 mt-1 d-none d-lg-block">
+          <p>Pershendetje: <strong> {{ Auth::user()->name }}</strong> </p>
+          <form method="POST" action="{{ route('logout') }}">
+            @csrf
+            <button type="submit" class="btn btn-danger">C'Lajmrohu</button>
+          </form>
+      </div>
+      @endauth
       </div>
     </div>
       <nav class="navbar navbar-expand-lg navbar-dark bg-light mb-2" id="main-menu">
@@ -89,8 +100,6 @@
         </div>
       </nav>
       @guest
-          
-      
       <div class="alert alert-warning" role="alert">
         <a href="/register" style="color: #000">Ju Mund te Regjistroheni ne kete faqe dhe te shperndani Fotot/Videot/Artikujt tuaja ne kete arhive te fshatit tone.</a> (Autori qe poston do ti shfaqet Emri)
       </div>
@@ -100,15 +109,35 @@
         @yield('content')
 
         <aside class="col-md-4 blog-sidebar">
-         
-              <div class="card">
-                  <div class="card-header">Kualiteti i Ajrit</div>
-           <div class="card-body" >
-            
-            <div class="circle" id="circle" value="{{ $air }}">{{ $air }} - AQI</div>
-            <span>Stacioni Per matjen e ajrit gjendet ne Gostivar</span> 
-        </div>
-        </div>         
+         @auth
+          <div class="card">
+            <div class="card-header">Profili Juaj</div>
+     <div class="card-body" >
+      
+      <p>Pershendetje: <strong>{{ Auth::user()->name }}</strong></p>
+      <p>Profili Im</p>
+      <p>Postimet e mia</p>
+      <p>Publiko +</p>
+
+      @if (Auth::user()->roli === 'admin')
+        <a href="/admin">Paneli Administrativ</a>
+      @endif
+
+      <form method="POST" action="{{ route('logout') }}">
+        @csrf
+        <button type="submit" class="btn btn-danger">C'Lajmrohu</button>
+      </form>
+      </div>
+      </div>         
+      @endauth
+  <div class="card">
+    <div class="card-header">Kualiteti i Ajrit</div>
+<div class="card-body" >
+
+<div class="circle" id="circle" value="{{ $air }}">{{ $air }} - AQI</div>
+<span>Stacioni Per matjen e ajrit gjendet ne Gostivar</span> 
+</div>
+</div>         
               <div class="card">
                   <div class="card-header">Të dhëna dhe statistika</div>
                   <div class="card-body" id="info">
