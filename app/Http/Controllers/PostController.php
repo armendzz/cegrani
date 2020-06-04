@@ -61,7 +61,10 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        //
+        $post = Post::find($id);
+
+        return view('post/show')->with('post', $post);
+
     }
 
     /**
@@ -91,7 +94,7 @@ class PostController extends Controller
           $image = $request->image->store('posts', 'public');
           $data['image'] = $image;
        }
-       $post->category_id = $request->category;
+        $post->category_id = $request->category;
         $post->update($data);
         session()->flash('sukses', 'Posti u ndryshua me sukses');
         return redirect(route('adminpost'));

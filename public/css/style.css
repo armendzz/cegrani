@@ -303,4 +303,42 @@ li.active > a {
 
 
 
+    #baba {
+   
+        font-size: 55px;
+    }
     
+    #dita {
+        font-style: italic;
+        margin-bottom: 7px;
+    }
+    
+    #grada {
+        margin: auto;
+    }
+    
+    #tempico {
+        margin: auto;
+    }
+    #tjera {
+        margin: auto;
+    }
+    
+    p.temtitle {
+        border-bottom-style: solid;
+        border-bottom-width: thin;
+    }
+
+    span.ora {
+        border-bottom-style: solid;
+        border-bottom-width: thin;
+        border-color: wheat;
+    }
+
+    #ditet {
+        color: white;
+    }
+
+    .ditet ul li a{
+        color: black;
+    }
