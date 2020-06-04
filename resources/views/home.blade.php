@@ -35,9 +35,9 @@
   <div class="card bg-info text-white">
       <div class="col-sm-12 mt-1"> <p class="temtitle">Temperatura Momentale</p></div>
      <div class="row  mb-auto">
-      <div class="col-sm-2 mb-auto" id="tempico"><img src="https://www.shkabaj.net/moti/img/icons/116Night.png" alt=""> </div>
+      <div class="col-sm-2 mb-auto" id="tempico"><img src="/icon/{{ $sot['iconCode'] }}.png" alt=""> </div>
       <div class="col-sm-3 mb-auto" id="grada"> <h1 id="baba"> <strong>  {{ $sot['temperature'] }} °C</strong></h1> </div>
-     <div class="col-sm-7  mb-auto" id="tjera"><p>asdasdasd</p> <p>asdasdasd</p> <p>asdasdasd</p></div>
+     <div class="col-sm-7  mb-auto" id="tjera"><p>{{ $sot['cloudCoverPhrase'] }}</p> <p>Kualiteti i Ajrit: <span>{{ $air }} - AQI</span> </p> <p>Gostivar, Cegran</p></div>
   
      
   </div>

@@ -15,7 +15,7 @@ class HomeController extends Controller
       $tempora = json_decode(file_get_contents('https://api.weather.com/v1/geocode/41.8366/20.9722/forecast/fifteenminute.json?units=m&language=en-US&apiKey=9d2908c81003444ea908c81003b44ed4'), true);
       $res = json_decode(file_get_contents('https://api.weather.com/v1/geocode/41.8366/20.9722/forecast/daily/5day.json?units=m&language=en-US&apiKey=9d2908c81003444ea908c81003b44ed4'), true);
       $date = date('Y-m-d');
-      /* dd($tempora); */
+      /* dd($res); */
       $category = Category::where('name', 'njoftime')->first();
       $njoftime = $category->posts()->orderBy('created_at','desc')->take(3)->get();
       
