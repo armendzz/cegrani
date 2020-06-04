@@ -219,3 +219,14 @@
 </div>
 </div><!-- /.blog-main -->
 @endsection
+
+@section('widget')
+<div class="card">
+  <div class="card-header">Kualiteti i Ajrit</div>
+<div class="card-body" >
+
+<div class="circle" id="circle" value="{{ $air }}">{{ $air }} - AQI</div>
+<span>Stacioni Per matjen e ajrit gjendet ne Gostivar</span> 
+</div>
+</div>   
+@endsection

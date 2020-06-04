@@ -130,14 +130,7 @@
       </div>
       </div>         
       @endauth
-  <div class="card">
-    <div class="card-header">Kualiteti i Ajrit</div>
-<div class="card-body" >
-
-<div class="circle" id="circle" value="{{ $air }}">{{ $air }} - AQI</div>
-<span>Stacioni Per matjen e ajrit gjendet ne Gostivar</span> 
-</div>
-</div>         
+    @yield('widget')      
               <div class="card">
                   <div class="card-header">Të dhëna dhe statistika</div>
                   <div class="card-body" id="info">
