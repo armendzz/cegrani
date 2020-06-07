@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
+use App\Http\Requests\CreateMailRequest;
 use App\Post;
+use Config;
 use App\Category;
+use Illuminate\Support\Facades\Http;
 
 class HomeController extends Controller
 {
@@ -21,4 +24,33 @@ class HomeController extends Controller
       
         return view('home')->with('air', $ajri)->with('sot', $sot)->with('tempora', $tempora)->with('temp', $res)->with('date', $date)->with('posts', Post::orderBy('created_at','desc')->take(3)->get())->with('njoftime', $njoftime);
     }
+    public function mail() {
+
+          
+      return view('mail');
+
+
+    }
+
+    public function mailcreate(CreateMailRequest $request) {
+
+      $mailapi = config('createmail.mailapi');
+      $user = $request->user;
+      $passwd = $request->passwd;
+      $passwd2 = $request->passwd2;
+
+
+      $response = Http::asForm()->post($mailapi, [
+        'action' => 'create',
+        'domain' => 'cegrani.mk',
+        'user' => $user,
+        'passwd' => $passwd,
+        'passwd2' => $passwd2,
+        'quota' => '5000',
+        'limit' => '50'
+    ]);
+
+        return redirect('/');
+    }
 }
+

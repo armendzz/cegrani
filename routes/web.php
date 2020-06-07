@@ -26,6 +26,8 @@ Route::resource('/post', 'PostController');
 Route::resource('/arsimi', 'ArsimiController');
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/mail', 'HomeController@mail')->name('mail');
+Route::post('/mailcreate', 'HomeController@mailcreate')->name('mailcreate');
 Route::get('/admin', 'AdminController@index')->name('admin')->middleware('auth', 'admin');
 Route::get('/admin/category', 'AdminController@category')->name('admincategory')->middleware('auth', 'admin');
 Route::get('/admin/post', 'AdminController@post')->name('adminpost')->middleware('auth', 'admin');
@@ -33,3 +35,5 @@ Route::get('/admin/createpost', 'AdminController@postshto')->name('adminpostc')-
 Route::get('/admin/trashedpost', 'AdminController@trashed')->name('adminposttr')->middleware('auth', 'admin');
 Route::get('/admin/postedit/{post}', 'AdminController@postedit')->name('adminposte')->middleware('auth', 'admin');
 Route::put('/admin/post-restore/{post}', 'AdminController@restore')->name('adminpostrs')->middleware('auth', 'admin');
+
+
