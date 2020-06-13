@@ -30,14 +30,13 @@
     <div class="container">
       
       <div class="nav mb-auto mt-1 d-none d-lg-block" id="top-menu">
-        <nav class="nav d-flex justify-content-between">
+        <nav class="nav d-flex ">
             <span class="p-2 text-muted">{{$date}} </span>
           <a class="p-2 text-muted" href="#"><i class="fa fa-child"></i> SHKA Jahi Hasani</a>
           <a class="p-2 text-muted" href="#">FH Cegrani-Zvicer</a>
           <a class="p-2 text-muted" href="#">FH Cegrani-Austri</a>
           <a class="p-2 text-muted" href="#"><i class="fa fa-volume-control-phone"></i> Kontakt</a>
-          <a class="p-2 text-muted float-right" href="#"><i class="fa fa-volume-control-phone"></i> Kontakt</a>
-          <a class="p-2 text-muted float-right" href="#"><i class="fa fa-volume-control-phone"></i> Kontakt</a>
+       
         </nav>
       </div>
       <div class="col-md-13"> 
@@ -104,6 +103,11 @@
         <a href="/register" style="color: #000">Ju Mund te Regjistroheni ne kete faqe dhe te shperndani Fotot/Videot/Artikujt tuaja ne kete arhive te fshatit tone.</a> (Autori qe poston do ti shfaqet Emri)
       </div>
      @endguest
+     @if(session()->has('sukses'))
+     <div class="alert alert-success container mt-2">
+       {{ session()->get('sukses') }}
+     </div>
+     @endif
     <main role="main" class="container">
       <div class="row">
         @yield('content')
@@ -157,13 +161,46 @@
       </div><!-- /.row -->
 
     </main><!-- /.container -->
+   
 
-  
-    <footer class="blog-footer">
-      <p>Blog template built for <a href="https://getbootstrap.com/">Bootstrap</a> by <a href="https://twitter.com/mdo">@mdo</a>.</p>
-      <p>
-        <a href="#">Back to top</a>
-      </p>
+  <footer class="blog-footer">
+      <div class="row container">
+        <div class="col-md">
+          <div class="card">
+            
+              <p>Urgjenca</p>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">Cras justo odio</li>
+                <li class="list-group-item">Dapibus ac facilisis in</li>
+                <li class="list-group-item">Vestibulum at eros</li>
+              </ul>
+            </div> </div>
+            <div class=" col-md "><div class=" card">
+              <p>Urgjenca</p>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">Cras justo odio</li>
+                <li class="list-group-item">Dapibus ac facilisis in</li>
+                <li class="list-group-item">Vestibulum at eros</li>
+              </ul>
+            </div> </div>
+            <div class=" col-md "><div class=" card">
+              <p>Urgjenca</p>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">Cras justo odio</li>
+                <li class="list-group-item">Dapibus ac facilisis in</li>
+                <li class="list-group-item">Vestibulum at eros</li>
+              </ul>
+            </div> </div>
+            <div class="col-sm-4"><div class="card">
+              <p>Reth Nesh</p>
+            
+              <p>Faqja eshte e krijuar me burim te hapur. </p> <p>Ju mund te kontriboni ne avancimin e faqes: <a href="https://github.com/armendzz/cegrani">Github</a> </p>
+              
+            </div> </div>
+          </div>
+          <p>
+            <a href=" #">Shko Larte</a>
+            </p>
     </footer>
 
     <!-- Bootstrap core JavaScript

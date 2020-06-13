@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 //require_once '../../vendor/autoload.php';
 use Illuminate\Http\Request;
+use Config;
+
 
 class ArsimiController extends Controller
 {
@@ -15,8 +17,8 @@ class ArsimiController extends Controller
     {
         $date = date('Y-m-d');
 
-
-
+        $fbapi = config('fbapi.fbapi');
+        
         $fb = new \Facebook\Facebook([
             'app_id' => '551406325565243',
             'app_secret' => '3e2dd1b57fc5b4230293f41d809b01bb',
@@ -30,7 +32,7 @@ class ArsimiController extends Controller
                 // Returns a `FacebookFacebookResponse` object
                 $response = $fb->get(
                   '/122738611080872/feed?fields=id,message,created_time,attachments{subattachments,media}&limit=50',
-                  'EAAH1gEophzsBAHwgGPZCQfHuFVc36ZA6zYppgFkwPZBbr1VZCIrPyMJYGi1381hHwHdxgGlsqsW9vjZC0vUd9Cz4il98ZBwDfCiYAf7ZCZBkqHZAC1hrpJpKk2afs4vcckOQjPS1WeWajTJufayrEagcXAWBiGZAuAHCX108ZCse6K3BBZCPQAi53FDomQuMSn5wDntl1XWtaCtslNaHWuDQ3fQZC'
+                  $fbapi
                 );
               } catch(FacebookExceptionsFacebookResponseException $e) {
                 echo 'Graph returned an error: ' . $e->getMessage();

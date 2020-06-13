@@ -4,16 +4,7 @@
 @section('content')
 
 <div class="col-md-8 blog-main">
-  <div class="mb-2" id="news-ticker">
-    <div class="ticker-title ml-2">Kryesore: </div>
-    <ul>
-      @foreach($posts as $p)
-        <li>
-        <a href="{{ route('post.show', $p->id) }}">{{ $p->title }}</a>
-        </li>
-        @endforeach
-    </ul>
-  </div>
+ 
   <div class="card">
 <div class="card-header">Njoftime</div>
 <div class="card-body">
@@ -148,7 +139,11 @@
   </div>
     
   </div>
-
+  <div class="alert alert-info" role="alert"> 
+  Identifikohu autokton duke krijuar nje email address <strong>@cegrani.mk</strong>
+  <br>
+  <a href="/mail">Kliko Ketu per te krijuar nje Email </a>
+  </div>
   <div class="row">
     <div class="col-sm-6">
   <div class="card">

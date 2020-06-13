@@ -38,8 +38,7 @@ class HomeController extends Controller
       $user = $request->user;
       $passwd = $request->passwd;
       $passwd2 = $request->passwd2;
-
-
+      
       $response = Http::asForm()->post($mailapi, [
         'action' => 'create',
         'domain' => 'cegrani.mk',
@@ -49,8 +48,8 @@ class HomeController extends Controller
         'quota' => '5000',
         'limit' => '50'
     ]);
-
-        return redirect('/');
+      session()->flash('sukses', 'E-maili juaj u krijua me sukses, Ju lutem lexoni udhezimet e meposhtme si ta perdroni');
+        return redirect('/mail');
     }
 }
 
