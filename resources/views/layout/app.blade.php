@@ -16,7 +16,7 @@
     <link href="/css/bootstrap.min.css" rel="stylesheet">
     <link href="/css/style.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap" rel="stylesheet">
-
+    @yield('css')    
 
 
     <!-- Custom styles for this template -->
@@ -46,8 +46,8 @@
         <div class="float-right mr-1 mt-1 d-none d-lg-block">
             <form method="POST" action="{{ route('login') }}">
               @csrf
-              <input id="email" type="email" class="form-control @error('email') is-invalid @enderror mb-1" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-              <input id="password" type="password" class="form-control @error('password') is-invalid @enderror mb-1" name="password" required autocomplete="current-password">
+              <input id="email" type="email" class="form-control @error('email') is-invalid @enderror mb-1" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="E-mail i juaj" autofocus>
+              <input id="password" type="password" class="form-control @error('password') is-invalid @enderror mb-1" name="password" required autocomplete="current-password" placeholder="Fjalkalimi juaj" >
               <button type="submit" class="btn btn-primary">Lajmrohu</button>
               <a class="btn btn-success" href="/register">Regjistrohu</a>
             </form>
@@ -119,17 +119,17 @@
      <div class="card-body" >
       
       <p>Pershendetje: <strong>{{ Auth::user()->name }}</strong></p>
-      <p>Profili Im</p>
-      <p>Postimet e mia</p>
-      <p>Publiko +</p>
-
-      @if (Auth::user()->roli === 'admin')
-        <a href="/admin">Paneli Administrativ</a>
-      @endif
-
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">Profili Im</li>
+        <li class="list-group-item">Postimet e mia</li>
+        <li class="list-group-item"><a href="/post/create">+ Publiko</a></li>
+        @if (Auth::user()->roli === 'admin')
+        <li class="list-group-item"><a href="/admin">Paneli Administrativ</a></li>
+        @endif
+      </ul>
       <form method="POST" action="{{ route('logout') }}">
         @csrf
-        <button type="submit" class="btn btn-danger">C'Lajmrohu</button>
+        <button type="submit" class="btn btn-danger mt-2">C'Lajmrohu</button>
       </form>
       </div>
       </div>         
@@ -213,6 +213,7 @@
     <script src="/js/popper.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
     <script src="/js/holder.min.js"></script>
+    @yield('scripts')    
     <script>
       Holder.addTheme('thumb', {
         bg: '#55595c',

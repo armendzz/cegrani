@@ -28,7 +28,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        return view('post/create')->with('categories', Category::all());
     }
 
     /**
@@ -75,7 +75,9 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        //
+        $post = Post::find($id);
+        
+        return view('post.edit')->with('post', $post)->with('categories', Category::all());
     }
 
     /**
@@ -97,7 +99,7 @@ class PostController extends Controller
         $post->category_id = $request->category;
         $post->update($data);
         session()->flash('sukses', 'Posti u ndryshua me sukses');
-        return redirect(route('adminpost'));
+        return redirect('/post/'. $post->id);
     }
 
     /**
